@@ -10,7 +10,7 @@
 use super::stream::RlpStream;
 use super::traits::{Decodable, Encodable};
 use super::{DecoderError, Rlp};
-use primitives::{H128, H160, H256, H512, H520, U256};
+use primitives::{H128, H160, H256, H384, H512, H520, H768, U256};
 use std::iter::{empty, once};
 use std::{cmp, mem, str};
 
@@ -247,14 +247,18 @@ macro_rules! impl_decodable_for_hash {
 impl_encodable_for_hash!(H128);
 impl_encodable_for_hash!(H160);
 impl_encodable_for_hash!(H256);
+impl_encodable_for_hash!(H384);
 impl_encodable_for_hash!(H512);
 impl_encodable_for_hash!(H520);
+impl_encodable_for_hash!(H768);
 
 impl_decodable_for_hash!(H128, 16);
 impl_decodable_for_hash!(H160, 20);
 impl_decodable_for_hash!(H256, 32);
+impl_decodable_for_hash!(H384, 48);
 impl_decodable_for_hash!(H512, 64);
 impl_decodable_for_hash!(H520, 65);
+impl_decodable_for_hash!(H768, 96);
 
 macro_rules! impl_encodable_for_uint {
     ($name: ident, $size: expr) => {
